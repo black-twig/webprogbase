@@ -6,28 +6,24 @@ class JsonStorage {
     constructor(filePath) {
         this.filePath = filePath;
     }
-
     readItems() {
         const jsonText = fs.readFileSync(this.filePath);
         const jsonArray = JSON.parse(jsonText);
         return jsonArray.items;
     }
-
-    // new stuff?
     get nextId() {
-        const jsonArray = this.readItems();
-        return jsonArray.nextId;
+        const jsonText = fs.readFileSync(this.filePath.slice(0, -6)+'_id.json');
+        const Id = JSON.parse(jsonText);
+        return Id.nextId;
     }
-
     incrementNextId() {
-        const jsonArray = this.readItems();
-        jsonArray.nextId +=1;
+        let newId = this.nextId;
+        newId +=1;
+        fs.writeFileSync(this.filePath.slice(0, -6)+'_id.json', JSON.stringify({nextId : newId, items : this.readItems()}, null, 4));
     }
-    
     writeItems(items) {
         fs.writeFileSync(this.filePath, JSON.stringify(items, null, 4));
     }
-
 };
 
 module.exports = JsonStorage;

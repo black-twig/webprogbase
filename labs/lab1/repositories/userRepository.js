@@ -12,7 +12,7 @@ class UserRepository {
     }
  
     getUsers() { 
-        console.log('ITEMS'.bgGreen);
+        console.log('getUsers'.bgGreen);
         const items = this.storage.readItems();
         let users = [];
         for (const item of Object.values(items)) {
@@ -24,22 +24,11 @@ class UserRepository {
         return users;
     }
  
-    getUserById(id) {
-        // const items = this.storage.readItems();
-        // for (const item in Object.values(items)) {
-        //     console.log("the item");
-        //     console.log(item);
-        //     if (item.id === id) {
-        //         console.log("found");
-        //         return new User(item.id, item.login, item.fullname, 
-        //                         item.role, item.registeredAt, 
-        //                         item.avaUrl, item.isEnabled);
-        //     }
-        // }
+    getUserById(userid) {
         const users = this.getUsers();
         for(const user of users)
         {
-            if(user.id === id) {
+            if(user.id === userid) {
                         console.log('found'.green);
                         return new User(user.id, user.login, user.fullname, 
                             user.role, user.registeredAt, 
@@ -48,19 +37,6 @@ class UserRepository {
         }
         return null;
     }
-    
-    addUser(userModel) {
-        throw new Error("Not implemented"); 
-    }
- 
-    updateUser(userModel) {
-        throw new Error("Not implemented"); 
-    }
- 
-    deleteUser(userId) {
-        throw new Error("Not implemented"); 
-    }
-
 };
  
 module.exports = UserRepository;
