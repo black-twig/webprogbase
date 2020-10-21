@@ -1,5 +1,3 @@
-const colors=require('colors');
-
 const User = require('../models/user');
 const JsonStorage = require('../jsonStorage');
 
@@ -12,7 +10,6 @@ class UserRepository {
     }
  
     getUsers() { 
-        console.log('getUsers'.bgGreen);
         const items = this.storage.readItems();
         let users = [];
         for (const item of Object.values(items)) {
@@ -29,7 +26,6 @@ class UserRepository {
         for(const user of users)
         {
             if(user.id === userid) {
-                        console.log('found'.green);
                         return new User(user.id, user.login, user.fullname, 
                             user.role, user.registeredAt, 
                             user.avaUrl, user.isEnabled);

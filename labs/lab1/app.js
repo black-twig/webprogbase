@@ -32,7 +32,9 @@ while (true) {
 
         let out = 'All users:';
         for (const user of users) {
-            out = out + "\n" + user.login + " -> " + user.fullname;
+            const usrlog = user.login.length;
+            out = out + "\n\n" + user.login + " -> fullname: "
+                + user.fullname + "\n" + `role: ${user.role}`.padStart(usrlog + 11, "-");
         }
         console.log(out);
     }
@@ -42,19 +44,24 @@ while (true) {
         const userId = parseInt(input);
         const user = userRepository.getUserById(userId);
         if (!user) {
-            console.log(`Error: user with id ${userId} was not found.`.blue);
+            console.log(`Error: user with id ${userId} was not found.`.red);
             continue;
         }
-        console.log(`User: ${user.login} "${user.fullname}"`);
+        console.log(`User (${user.id}):`.bold + `
+        login: ${user.login} 
+        role: ${user.role}
+        fullname: ${user.fullname}
+        registered at: ${new Date(user.registeredAt)}
+        avatar: ${user.avaUrl}`);
     }
-    //artmuseums/get/all 
+    //artmuseums/get/all
     //command to get short info abt all art museum
     else if (command === "artmuseums/get/all") {
         let artMuseums = artMuseumRepository.getArtMuseums();
 
         let out = 'All art museums:';
         for (const artMuseum of artMuseums) {
-            out = out + "\n" + artMuseum.name + " -> " + artMuseum.founded;
+            out = out + "\n" + artMuseum.name + " -> " + artMuseum.country;
         }
         console.log(out);
     }
@@ -64,10 +71,16 @@ while (true) {
         const artMuseumId = parseInt(input);
         const artMuseum = artMuseumRepository.getArtMuseumById(artMuseumId);
         if (!artMuseum) {
-            console.log(`Error: art museum with id ${artMuseumId} was not found.`.blue);
+            console.log(`Error: art museum with id ${artMuseumId} was not found.`.red);
             continue;
         }
-        console.log(`ArtMuseum: ${artMuseum.name} ${artMuseum.founded}`);
+        const foundedDate = new Date(artMuseum.founded);
+        console.log(`ArtMuseum (${artMuseum.id}):`.bold + `
+        name: ${artMuseum.name} 
+        country: ${artMuseum.country}
+        founded: ${foundedDate.getFullYear()}
+        artists: ${artMuseum.artistNum}
+        exhibits: ${artMuseum.exhibitNum}`);
     }
     //artmuseums/add
     //command to add new art museum to file
@@ -80,7 +93,7 @@ while (true) {
             if (i === 3) {
                 let answer = [];
                 while (isNaN(answer[0]) || isNaN(answer[1]) || isNaN(answer[2])) {
-                    console.log('When founded:'.bgCyan);
+                    console.log('When founded (numbers):'.bgCyan);
                     answer[0] = readline.question('year:');
                     answer[1] = readline.question('month:');
                     answer[2] = readline.question('day:');
@@ -101,7 +114,10 @@ while (true) {
             answers[2], answers[3],
             Number(answers[4]), Number(answers[5]));
         if (!artMuseumRepository.addArtMuseum(artMuseum)) {
-            console.error("Given art museum was not created.");
+            console.error(`Given art museum was not created.`.red);
+        }
+        else{
+            console.log(`Art museum successfully created`.green);
         }
     }
     //artmuseums/update/id
@@ -137,7 +153,10 @@ while (true) {
             answers[2], answers[3],
             Number(answers[4]), Number(answers[5]));
         if (!artMuseumRepository.updateArtMuseum(artMuseum)) {
-            console.error("Given art museum with id ${artMuseumId} was not updated.");
+            console.error(`Given art museum with id ${artMuseumId} was not updated.`.red);
+        }
+        else{
+            console.log(`Art museum successfully created`.green);
         }
     }
     //artmuseums/delete/id
@@ -145,11 +164,14 @@ while (true) {
     else if (command === "artmuseums/delete/id") {
         const artMuseumId = parseInt(input);
         if (!artMuseumRepository.deleteArtMuseum(artMuseumId)) {
-            console.error("Given art museum with id ${artMuseumId} was not deleted.");
+            console.error(`Given art museum with id ${artMuseumId} was not deleted.`.red);
+        }
+        else {
+            console.log(`Deleted art museum with id ${artMuseumId}.`.blue)
         }
     }
     //if command is incorrect
     else {
-        console.error(`This command is not supported: '${text}'.`);
+        console.error(`This command is not supported: '${text}'.`.yellow);
     }
 }

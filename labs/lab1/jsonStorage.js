@@ -19,7 +19,7 @@ class JsonStorage {
     incrementNextId() {
         let newId = this.nextId;
         newId +=1;
-        fs.writeFileSync(this.filePath.slice(0, -6)+'_id.json', JSON.stringify({nextId : newId, items : this.readItems()}, null, 4));
+        fs.writeFileSync(this.filePath.slice(0, -6)+'_id.json', JSON.stringify({nextId : newId}, null, 4));
     }
     writeItems(items) {
         fs.writeFileSync(this.filePath, JSON.stringify(items, null, 4));

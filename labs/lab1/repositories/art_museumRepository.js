@@ -1,5 +1,3 @@
-const colors = require('colors');
-
 const ArtMuseum = require('../models/art_museum');
 const JsonStorage = require('../jsonStorage');
 
@@ -12,7 +10,6 @@ class ArtMuseumRepository {
     }
 
     getArtMuseums() {
-        console.log('getArtMuseums'.bgGreen);
         const items = this.storage.readItems();
         let artMuseums = [];
         for (const item of Object.values(items)) {
