@@ -156,7 +156,7 @@ while (true) {
             console.error(`Given art museum with id ${artMuseumId} was not updated.`.red);
         }
         else{
-            console.log(`Art museum successfully created`.green);
+            console.log(`Art museum successfully updated`.green);
         }
     }
     //artmuseums/delete/id

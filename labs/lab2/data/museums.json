@@ -41,20 +41,12 @@
             "exhibitNum": 34
         },
         {
-            "id": 13,
-            "name": "museum",
-            "country": "country",
-            "founded": "1234-12-12T21:57:56.000Z",
-            "artistNum": 1234,
-            "exhibitNum": 123
-        },
-        {
-            "id": 16,
-            "name": "some",
-            "country": "some",
-            "founded": "1234-12-12T21:57:56.000Z",
-            "artistNum": 12,
-            "exhibitNum": 12
+            "id": 14,
+            "name": "lol",
+            "country": "string",
+            "founded": "string",
+            "artistNum": 0,
+            "exhibitNum": 0
         }
     ]
 }
