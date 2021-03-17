@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+
+  {{> head}}
+
+<body>
+
+  <header id="header">
+    <div class="name">Art Museum Association</div>
+
+    <img src="/images/logo.png" class="logo"/>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/museums">Museums</a></li>
+        <li>About</li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>About</h1>
+  <p><b>Name</b>: BlackTwig </p>
+  <p><b>E-mail</b>: some.email@gmail.com</p>
+  <p><b>About</b>: something</p>
+</body>
+
+</html>

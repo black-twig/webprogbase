@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+
+{{> head}}
+
+<body>
+
+  <header id="header">
+    <div class="name">Art Museum Association</div>
+
+    <img src="/images/logo.png" class="logo" />
+
+    <nav class="menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>Users</li>
+        <li><a href="/museums">Museums</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>Users:</h1>
+  <table class="users">
+    <tr>
+      <th>Login</th>
+      <th>Fullname</th>
+      <th>Registered</th>
+    </tr>
+    <tr>
+      {{#users}}
+    <tr>
+      <td><a href="/users/{{id}}">{{login}}</a></td>
+      <td>{{fullname}}</td>
+      <td>{{registeredAt}}</td>
+    </tr>
+    {{/users}}
+    </tr>
+  </table>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+body {
+    text-align: center;
+    font-size: 22px;
+    line-height: 30px;
+    background-color: rgb(224, 215, 235);
+}   
+
+a {
+    color: rgb(56, 39, 77);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(38, 107, 197);
+    text-decoration: none;
+}
+
+#header {
+    box-sizing: border-box;
+    background: #c7e7ec;
+    font-size: 25px;
+    padding: 10px 15px;
+    margin-bottom: 7px;
+    display: table;
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;  
+}
+
+.name {
+    background: rgb(91, 66, 122);
+    text-align: center;
+    width: 300px;
+    color: #c7e7ec;
+    border-radius: 10px;
+}
+
+.logo {
+    vertical-align: middle;
+    float: left;
+    margin-left: 10px;
+    height: 80px;
+}
+
+.name, .menu {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.menu ul {
+    text-align: right;
+    word-spacing: 60px;
+}
+
+.menu ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.users {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border: 1px solid rgb(91, 66, 122);
+}
+
+.users th, td {
+    border: 1px solid rgb(91, 66, 122);
+    padding: 10px 20px;
+}
+
+.museums {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border: 1px solid rgb(91, 66, 122);
+}
+
+.museums th, td {
+    border: 1px solid rgb(91, 66, 122);
+    padding: 10px 20px;
+}
+
+.usr_ava {
+    vertical-align: top;
+    float: left;
+    width: 500px;
+    margin-left: 5%;
+    margin-top: 1%;
+    border: 10px solid rgb(91, 66, 122);
+    border-radius: 15px 50px 30px;
+}
+
+.user {
+    display: inline-block;
+    margin-top: 4%;
+    width: 50%;
+    margin-right: 8%;
+    text-align: left;
+}
+
+.museum_photo {
+    vertical-align: top;
+    float: left;
+    width: 600px;
+    margin-left: 3%;
+    margin-top: 1%;
+    border: 10px solid rgb(91, 66, 122);
+    border-radius: 15px 50px 30px;
+}
+
+.museum {
+    display: inline-block;
+    background: #c7e7ec;
+    margin-top: 2%;
+    width: 50%;
+    margin-right: 5%;
+    text-align: left;
+    text-indent: 1%;
+    border: 5px solid rgb(91, 66, 122);
+    border-radius: 10px;
+}
+
+.bio {
+    border: 5px solid rgb(91, 66, 122);
+    background: #c7e7ec;
+    text-indent: 1%;
+    border-radius: 10px;
+}
