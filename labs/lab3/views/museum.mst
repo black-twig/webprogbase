@@ -2,28 +2,15 @@
 
 <html lang="en">
 
-  {{> head}}
+{{> head}}
 
 <body>
 
-  <header id="header">
-    <div class="name">Art Museum Association</div>
-
-    <img src="/images/logo.png" class="logo" />
-
-    <nav class="menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/museums">Museums</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  {{> header}}
 
   {{#museum}}
   <img src="/images/museum.jpg" class="museum_photo" />
-  
+
   <div class="museum">
     <p><b>Name</b>: {{name}}</p>
     <p><b>Country</b>: {{country}}</p>
@@ -33,6 +20,8 @@
   </div>
 
   {{/museum}}
+
+  {{> footer}}
 </body>
 
 </html>

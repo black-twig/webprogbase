@@ -2,28 +2,15 @@
 
 <html lang="en">
 
-  {{> head}}
+{{> head}}
 
 <body>
 
-  <header id="header">
-    <div class="name">Art Museum Association</div>
-
-    <img src="/images/logo.png" class="logo"/>
-
-    <nav class="menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li>Museums</li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  {{> header}}
 
   <h1>Museums:</h1>
 
-  <table class = "museums">
+  <table class="museums">
     <tr>
       {{#museums}}
     <tr>
@@ -32,6 +19,7 @@
     </tr>
     {{/museums}}
     </tr>
+    {{> footer}}
 </body>
 
 </html>

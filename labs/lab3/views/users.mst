@@ -6,20 +6,7 @@
 
 <body>
 
-  <header id="header">
-    <div class="name">Art Museum Association</div>
-
-    <img src="/images/logo.png" class="logo" />
-
-    <nav class="menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li>Users</li>
-        <li><a href="/museums">Museums</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  {{> header}}
 
   <h1>Users:</h1>
   <table class="users">
@@ -38,6 +25,7 @@
     {{/users}}
     </tr>
   </table>
+  {{> footer}}
 </body>
 
 </html>

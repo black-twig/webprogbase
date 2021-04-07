@@ -44,31 +44,31 @@ app.set('view engine', 'mst');
 
 
 app.get('/', function (req, res) {
-    res.render('index', {  });
+    res.render('index', {});
 });
 
 app.get('/about', function (req, res) {
-    res.render('about', {  });
+    res.render('about', {});
 });
 
 app.get('/users', function (req, res) {
     const users = userRepository.getUsers();
-    res.render('users', {users});
+    res.render('users', { users });
 });
 
 app.get('/users/:id', function (req, res) {
     const user = userRepository.getUserById(parseInt(req.params.id));
-    res.render('user', {user});
+    res.render('user', { user });
 });
 
 app.get('/museums', function (req, res) {
     const museums = museumRepository.getArtMuseums();
-    res.render('museums', {museums});
+    res.render('museums', { museums });
 });
 
 app.get('/museums/:id', function (req, res) {
     const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
-    res.render('museum', {museum});
+    res.render('museum', { museum });
 });
 
 // app.use('', mstRouter);

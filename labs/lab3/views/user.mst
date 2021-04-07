@@ -2,29 +2,18 @@
 
 <html lang="en">
 
-  {{> head}}
+{{> head}}
 
 <body>
 
-  <header id="header">
-    <div class="name">Art Museum Association</div>
-
-    <img src="/images/logo.png" class="logo" />
-
-    <nav class="menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/museums">Museums</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  {{> header}}
 
   {{#user}}
   <img src="/images/user.jpg" class="usr_ava" />
   <div class="user">
-    <p><h2>{{fullname}}</h2></p>
+    <p>
+    <h2>{{fullname}}</h2>
+    </p>
     <p>({{login}}) {{registeredAt}} </p>
     <div class="bio">
       <p> Just a usual user ;) </p>
@@ -32,6 +21,7 @@
   </div>
 
   {{/user}}
+  {{> footer}}
 </body>
 
 </html>
