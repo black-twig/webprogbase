@@ -2,11 +2,11 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
   <h1>Museums:</h1>
 
@@ -19,7 +19,62 @@
     </tr>
     {{/museums}}
     </tr>
-    {{> footer}}
+  </table>
+
+
+                <form method="get" action="/museums">
+                    <div>
+                        {{#pages}}
+                        {{#namePage}}
+                            <input type="text" name="name" placeholder="Enter museum name" value={{namePage}}>
+                        {{/namePage}}
+                        {{^namePage}}
+                            <input type="text" name="name" placeholder="Enter museum name">
+                        {{/namePage}}
+                        <button>Find</button>
+                        {{/pages}}
+                    </div>
+                </form>
+    
+                <form method="get" action="/museums">
+                    <div>
+                        {{#pages}}
+                            {{#prevPage}}
+                                {{#namePage}}
+                                <a href="/museums?page={{prevPage}}&name={{namePage}}">Previous</a>
+                                {{/namePage}}
+                                {{^namePage}}
+                                <a href="/museums?page={{prevPage}}">Previous</a>
+                                {{/namePage}}
+                            {{/prevPage}}
+                            {{^prevPage}}
+                                <span>Previous</span>
+                            {{/prevPage}}
+                            <input type="number" name="page" min="1" max="{{pagesNumber}}" value={{currentPage}}>
+                            {{#namePage}}
+                                <input type="hidden" name="name" value={{namePage}}>
+                            {{/namePage}}
+                            <p> / </p>
+                            <p>{{pagesNumber}}</p>
+                            {{#nextPage}}
+                                {{#namePage}}
+                                <a href="/museums?page={{nextPage}}&name={{namePage}}">Next</a>
+                                {{/namePage}}
+                                {{^namePage}}
+                                <a href="/museums?page={{nextPage}}">Next</a>
+                                {{/namePage}}
+                            {{/nextPage}}
+                            {{^nextPage}}
+                                <span >Next</span>
+                            {{/nextPage}}
+                            <button >Find</button>
+                        {{/pages}}
+                    </div>
+                </form>
+
+
+
+    {{> partials/footer}}
 </body>
 
 </html>

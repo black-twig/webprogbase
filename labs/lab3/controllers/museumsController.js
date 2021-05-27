@@ -1,31 +1,58 @@
-const MuseumRepository = require('../repositories/museumRepository');
+const path = require('path');
+const museumRepository = require('../repositories/museumRepository');
+const MuseumRepository = new museumRepository(path.resolve(__dirname, '../data/museums.json'));
 const museumProperty = Symbol('museum');
-const museumRepository = new MuseumRepository('data/museums.json');
 
 module.exports = {
-    getArtMuseums(req, res) {
-        const page = Number(req.query.page);
-        const perPage = Number(req.query.per_page);
-        const museums = museumRepository.getArtMuseums();
-        if (page && perPage) {
-            res.send(museums.slice((page - 1) * perPage, page * perPage));
+    async getArtMuseums(req, res) {
+        try {
+
+            let museums = MuseumRepository.getMuseumsPaginated(Number(req.query.page), Number(req.query.per_page), req.query.name);
+            let pagesNumber = MuseumRepository.getPagesNumber(Number(req.query.page), Number(req.query.per_page), req.query.name);
+            let page = req.query.page;
+            let name = req.query.name;
+            if (!page) page = 1;
+            else page = Number(page);
+            let pages = { currentPage: Number(page) };
+
+            if (page !== 1) pages.prevPage = page - 1;
+            if (page !== pagesNumber) pages.nextPage = page + 1;
+            if (name) pages.namePage = name;
+
+            if (museums) {
+
+                res.status(200).render('museums', { museums: museums, pagesNumber: pagesNumber, pages: pages});
+
+            }
+            else {
+
+                res.status(404).send({ museums: null, message: "Not found." });
+
+            }
+
+        } catch (err) {
+
+            console.log(err.message);
+            res.status(500).send({ photos: null, message: 'Server error.' });
+
         }
-        else
-            res.send(museums);
-        res.end();
     },
     getArtMuseumById(req, res) {
-        res.send(req[museumProperty]);
-        res.end();
-    },
-    getArtMuseumByIdHandler(req, res, next) {
-        const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
+        console.log(req.params.id);
+
+        const museum = museumRepository.getPhotoById(parseInt(req.params.id));
+
+
         if (museum) {
-            req[museumProperty] = museum;
-            next();
+
+            res.status(200).render('photo', { photo: museum });
+
         }
-        else
-            res.sendStatus(404);
+        else {
+
+            res.status(404).send({ photo: null, message: "Not found." });
+
+        }
     },
     addArtMuseum(req, res) {
         try {

@@ -21,6 +21,121 @@ class ArtMuseumRepository {
         return artMuseums;
     }
 
+
+    getMuseumsPaginated(page, per_page, name) {
+
+        const page_size = 3;
+        const maxPageSize = 3;
+
+        if (per_page) {
+            if (per_page > maxPageSize) {
+                console.log("Error.");
+                return 1;
+            }
+        }
+        else {
+            per_page = page_size;
+        }
+        if (!page) {
+            page = 1;
+        }
+        const museums = this.getArtMuseums();
+        const museumNumber = Number(museums.length);
+        const offset = per_page * (page - 1);
+        if (museumNumber <= offset) {
+            console.log("Error.");
+            return 1;
+        }
+        let museums_res = [];
+        if (name) {
+            for (let i = 0; i < museums.length; i++) {
+
+                if (museums[i].name.includes(name)) {
+                    museums_res.push(museums[i]);
+                }
+            }
+            museums_res = museums_res.slice(offset, offset + per_page);
+        }
+        const cur_museums = museums.slice(offset, offset + per_page);
+        if (name) {
+            return museums_res;
+        }
+        return cur_museums;
+
+    }
+
+
+    getPagesNumber(page, per_page, name) {
+
+        const page_size = 3;
+        const maxPageSize = 3;
+
+        if (per_page) {
+            if (per_page > maxPageSize) {
+                console.log("Error.");
+                return 1;
+            }
+        }
+        else {
+            per_page = page_size;
+        }
+        if (!page) {
+            page = 1;
+        }
+
+        const museums = this.getArtMuseums();
+        const museumNumber = Number(museums.length);
+        const offset = per_page * (page - 1);
+
+        if (museumNumber <= offset) {
+
+            console.log("Error.");
+
+            return 1;
+
+        }
+
+        let museums_res = [];
+        let tempLen = 0;
+
+        if (name) {
+            for (let i = 0; i < museums.length; i++) {
+                if (museums[i].name.includes(name)) {
+                    museums_res.push(museums[i]);
+                }
+            }
+            tempLen = museums_res.length;
+            museums_res = museums_res.slice(offset, offset + per_page);
+        }
+
+        let pagesNumber = 0;
+        if ((museumNumber / per_page) - Math.trunc(museumNumber / per_page) !== 0) {
+            pagesNumber = Math.trunc(museumNumber / per_page) + 1;
+        }
+        else {
+            pagesNumber = Math.trunc(museumNumber / per_page);
+        }
+
+        if (name) {
+
+            if ((tempLen / per_page) - Math.trunc(tempLen / per_page) !== 0) {
+                pagesNumber = Math.trunc(tempLen / per_page) + 1;
+            }
+            else {
+                pagesNumber = Math.trunc(tempLen / per_page);
+            }
+            if (pagesNumber === 0) {
+                pagesNumber = 1;
+            }
+            return pagesNumber;
+        }
+        if (pagesNumber === 0) {
+            pagesNumber = 1;
+        }
+        return pagesNumber;
+
+    }
+
     getArtMuseumById(artMuseumid) {
         const artMuseums = this.getArtMuseums();
         for (const artMuseum of artMuseums) {

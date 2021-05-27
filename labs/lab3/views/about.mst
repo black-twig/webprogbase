@@ -2,18 +2,18 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
   <h1>About</h1>
   <p><b>Name</b>: BlackTwig </p>
   <p><b>E-mail</b>: some.email@gmail.com</p>
   <p><b>About</b>: something</p>
 
-  {{> footer}}
+  {{> partials/footer}}
 </body>
 
 </html>

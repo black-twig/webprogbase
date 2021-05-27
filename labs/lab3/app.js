@@ -35,8 +35,8 @@ const options = {
 };
 
 
-app.use(express.static('./public'))
-app.use(express.static('./data'))
+app.use(express.static('./public'));
+app.use(express.static('./data'));
 
 app.engine('mst', mustache());
 app.set('views', path.join(__dirname, 'views'));
@@ -47,8 +47,14 @@ app.get('/', function (req, res) {
     res.render('index', {});
 });
 
+
 app.get('/about', function (req, res) {
     res.render('about', {});
+});
+
+app.use('', mstRouter);
+app.use((req, res) => {
+    res.status(400).send({ message: "Error in route."});
 });
 
 app.get('/users', function (req, res) {
@@ -61,15 +67,15 @@ app.get('/users/:id', function (req, res) {
     res.render('user', { user });
 });
 
-app.get('/museums', function (req, res) {
-    const museums = museumRepository.getArtMuseums();
-    res.render('museums', { museums });
-});
+//app.get('/museums', function (req, res) {
+//   const museums = museumRepository.getArtMuseums();
+//    res.render('museums', { museums });
+//});
 
-app.get('/museums/:id', function (req, res) {
-    const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
-    res.render('museum', { museum });
-});
+//app.get('/museums/:id', function (req, res) {
+//    const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
+//    res.render('museum', { museum });
+//});
 
 // app.use('', mstRouter);
 // app.use((req, res) => {
@@ -78,4 +84,6 @@ app.get('/museums/:id', function (req, res) {
 
 expressSwagger(options);
 
-app.listen(3000);
+app.listen(3000, function() {
+    console.log('Server is ready');
+});
