@@ -21,6 +21,9 @@
     </tr>
   </table>
 
+{{^museums}}
+No results
+{{/museums}}
 
                 <form method="get" action="/museums">
                     <div>
@@ -47,9 +50,6 @@
                                 <a href="/museums?page={{prevPage}}">Previous</a>
                                 {{/namePage}}
                             {{/prevPage}}
-                            {{^prevPage}}
-                                <span>Previous</span>
-                            {{/prevPage}}
                             <input type="number" name="page" min="1" max="{{pagesNumber}}" value={{currentPage}}>
                             {{#namePage}}
                                 <input type="hidden" name="name" value={{namePage}}>
@@ -64,15 +64,14 @@
                                 <a href="/museums?page={{nextPage}}">Next</a>
                                 {{/namePage}}
                             {{/nextPage}}
-                            {{^nextPage}}
-                                <span >Next</span>
-                            {{/nextPage}}
                             <button >Find</button>
                         {{/pages}}
                     </div>
                 </form>
 
-
+                <div >
+                <a  href="/museums/new">New museum</a>
+                </div>
 
     {{> partials/footer}}
 </body>

@@ -6,4 +6,7 @@ router.use('/users', usersRouter);
 const museumsRouter = require('./museumsRouter');
 router.use('/museums', museumsRouter);
 
+const mediaRouter = require('./mediaRouter');
+router.use('/media', mediaRouter);
+
 module.exports = router;

@@ -9,7 +9,9 @@
   {{> header}}
 
   {{#museum}}
-  <img src="/images/museum.jpg" class="museum_photo" />
+  <div>
+  <img src="{{imageUrl}}" class="museum_photo" />
+  </div>
 
   <div class="museum">
     <p><b>Name</b>: {{name}}</p>
@@ -19,6 +21,9 @@
     <p><b>Exhibitions</b>: {{exhibitNum}}</p>
   </div>
 
+  <form method="POST" action="/museums/{{id}}">
+    <input type="submit" value="Delete museum">
+  </form>
   {{/museum}}
 
   {{> footer}}

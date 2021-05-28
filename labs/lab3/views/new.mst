@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+{{> head}}
+
+<body>
+
+    {{> header}}
+    <div>
+        <form method="POST" action="/museums" enctype="multipart/form-data">
+            <p>New museum</p>
+            <div>
+                <div><p>Museum name:</p><input type="text" name="Mname" required></div><br>
+                <div><p>Country:</p><input type="text" name="country" required></div><br>
+                <div><p>Founded:</p><input type="date" name="founded" required></div><br>
+                <div><p>ArtistNum:</p><input type="number" name="artistNum" required></div><br>
+                <div><p>ExhibitNum:</p><input type="number" name="exhibitNum" required></div><br>
+                <div><p>Museum photo(file):</p><input type="file" name="imageUrl" required></div><br>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    {{> footer}}
+
+</body>
+
+</html>

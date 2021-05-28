@@ -14,8 +14,8 @@
             "id": 1,
             "login": "someOTHERUser11",
             "role": 0,
-            "fullname": "I Am A User",
-            "registeredAt": "2018-09-19",
+            "fullname": "User",
+            "registeredAt": "2018-10-19",
             "avaUrl": "http://progbase.herokuapp.com/images/progbase.jpg",
             "isEnabled": false
         }

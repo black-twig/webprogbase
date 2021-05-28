@@ -1,5 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
+
+const busboyBodyParser = require('busboy-body-parser');
+
+
 const apiRouter = require('./routes/apiRouter');
 const mstRouter = require('./routes/mstRouter');
 const morgan = require('morgan');
@@ -16,6 +21,12 @@ const museumRepository = new MuseumRepository('data/museums.json');
 
 
 const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(busboyBodyParser());
 
 app.use(morgan('dev'));
 
@@ -52,14 +63,11 @@ app.get('/about', function (req, res) {
     res.render('about', {});
 });
 
+
+
 app.use('', mstRouter);
 app.use((req, res) => {
     res.status(400).send({ message: "Error in route."});
-});
-
-app.get('/users', function (req, res) {
-    const users = userRepository.getUsers();
-    res.render('users', { users });
 });
 
 app.get('/users/:id', function (req, res) {

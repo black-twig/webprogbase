@@ -1,74 +1,74 @@
 const path = require('path');
-const museumRepository = require('../repositories/museumRepository');
-const MuseumRepository = new museumRepository(path.resolve(__dirname, '../data/museums.json'));
+const MuseumRepository = require('../repositories/museumRepository');
+const museumRepository = new MuseumRepository(path.resolve(__dirname, '../data/museums.json'));
 const museumProperty = Symbol('museum');
+const MediaRepository = require('./../repositories/mediaRepository');
+const mediaRepository = new MediaRepository(path.resolve(__dirname, '../data/media'));
+const Museum = require('../models/museum');
 
 module.exports = {
     async getArtMuseums(req, res) {
         try {
-
-            let museums = MuseumRepository.getMuseumsPaginated(Number(req.query.page), Number(req.query.per_page), req.query.name);
-            let pagesNumber = MuseumRepository.getPagesNumber(Number(req.query.page), Number(req.query.per_page), req.query.name);
             let page = req.query.page;
             let name = req.query.name;
+            const page_size = 3;
+
             if (!page) page = 1;
             else page = Number(page);
-            let pages = { currentPage: Number(page) };
+
+            let result = museumRepository.getMuseumsPaginated(Number(page), page_size, name);
+            let museums = result.museums_res;
+            let pagesNumber = Number(result.totalPages);
+
+            let pages = { currentPage: Number(result.currentPage) };
 
             if (page !== 1) pages.prevPage = page - 1;
             if (page !== pagesNumber) pages.nextPage = page + 1;
             if (name) pages.namePage = name;
 
-            if (museums) {
-
-                res.status(200).render('museums', { museums: museums, pagesNumber: pagesNumber, pages: pages});
-
-            }
-            else {
-
-                res.status(404).send({ museums: null, message: "Not found." });
-
-            }
+            res.status(200).render('museums', { museums: museums, pagesNumber: pagesNumber, pages: pages});
 
         } catch (err) {
 
             console.log(err.message);
-            res.status(500).send({ photos: null, message: 'Server error.' });
+            res.status(500).send({ museums: null, message: 'Server error.' });
 
         }
     },
-    getArtMuseumById(req, res) {
+    async getArtMuseumById(req, res) {
         console.log(req.params.id);
 
-        const museum = museumRepository.getPhotoById(parseInt(req.params.id));
+        const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
 
 
         if (museum) {
 
-            res.status(200).render('photo', { photo: museum });
+            res.status(200).render('museum', { museum: museum });
 
         }
         else {
 
-            res.status(404).send({ photo: null, message: "Not found." });
+            res.status(404).send({ museum: null, message: "Museum id is incorrect." });
 
         }
     },
-    addArtMuseum(req, res) {
-        try {
-            const museum = museumRepository.getArtMuseumById(museumRepository.addArtMuseum(req.body));
-            res.send(museum);
-            res.status(201);
-            res.end();
-        } catch (error) {
-            res.sendStatus(400);
-        }
+    async  addArtMuseum(req, res) {
+
+        const imageUrl = mediaRepository.addMedia(req.files['imageUrl']);
+
+        console.log(req.body);
+        const new_museum = new Museum(-1, req.body.Mname, req.body.country, req.body.founded, Number(req.body.artistNum), Number(req.body.exhibitNum), imageUrl);
+        const newId = museumRepository.addArtMuseum(new_museum);
+        console.log(newId);
+        res.redirect('/museums/' + newId);
     },
-    deleteArtMuseum(req, res) {
-        museumRepository.deleteArtMuseum(req[museumProperty].id);
-        res.send(req[museumProperty]);
+  
+    async  deleteArtMuseum(req, res) {
+        museumRepository.deleteArtMuseum(Number(req.params.id));
+        res.redirect('/museums');
     },
-    updateArtMuseum(req, res) {
+    
+    async updateArtMuseum(req, res) {
         if (!req.body)
             res.sendStatus(400);
         else {

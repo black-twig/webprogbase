@@ -4,8 +4,12 @@ const Media = require('../models/media');
 
 module.exports = {
     getMediaById(req, res) {
+
+        console.log("0");
         const media = mediaRepository.getMediaById(req.params.id);
+        console.log(media.path);
         if (media)
+        
             res.sendFile(media.path);
         else
             res.sendStatus(404);

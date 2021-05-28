@@ -1,30 +1,36 @@
 const UserRepository = require('../repositories/userRepository');
-const userProperty = Symbol('user');
 const userRepository = new UserRepository('data/users.json');
 
 module.exports = {
     getUsers(req, res) {
-        const page = Number(req.query.page);
-        const perPage = Number(req.query.per_page);
+        try {
         const users = userRepository.getUsers();
-        if (page && perPage) { 
-            res.send(users.slice((page-1)*perPage, page*perPage));
+            
+        res.status(200).render('users', { users: users});
+
+        } catch (err) {
+
+            console.log(err.message);
+            res.status(500).send({ users: null, message: 'Server error.' });
+
         }
-        else
-            res.send(users);
-        res.end();
+
     },
     getUserById(req, res) {
-        res.send(req[userProperty]);
-        res.end();
-    },
-    getUserByIdHandler(req, res, next) {
+        console.log(req.params.id);
+
         const user = userRepository.getUserById(parseInt(req.params.id));
+
+
         if (user) {
-            req[userProperty] = user;
-            next();
+
+            res.status(200).render('user', { user: user });
+
         }
-        else
-            res.sendStatus(404);
+        else {
+
+            res.status(404).send({ photo: null, message: "User id is incorrect." });
+
+        }
     }
 };

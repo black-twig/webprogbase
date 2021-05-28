@@ -6,7 +6,8 @@
             "country": "France",
             "founded": "1900-05-01",
             "artistNum": 112,
-            "exhibitNum": 12
+            "exhibitNum": 12,
+            "imageUrl": "/images/museum.jpg"
         },
         {
             "id": 1,
@@ -14,15 +15,8 @@
             "country": "United Kingdom",
             "founded": "1776-03-24",
             "artistNum": 132,
-            "exhibitNum": 28
-        },
-        {
-            "id": 4,
-            "name": "some",
-            "country": "some",
-            "founded": "1234-12-20",
-            "artistNum": 234,
-            "exhibitNum": 123
+            "exhibitNum": 28,
+            "imageUrl": ""
         },
         {
             "id": 8,
@@ -30,7 +24,8 @@
             "country": "c",
             "founded": "1898-04-03",
             "artistNum": 12,
-            "exhibitNum": 23
+            "exhibitNum": 23,
+            "imageUrl": ""
         },
         {
             "id": 9,
@@ -38,15 +33,44 @@
             "country": "co",
             "founded": "1857-06-07",
             "artistNum": 12,
-            "exhibitNum": 34
+            "exhibitNum": 34,
+            "imageUrl": ""
         },
         {
-            "id": 14,
-            "name": "lol",
-            "country": "string",
-            "founded": "string",
-            "artistNum": 0,
-            "exhibitNum": 0
+            "id": 10,
+            "name": "f",
+            "country": "f",
+            "founded": "2021-05-04",
+            "artistNum": 2,
+            "exhibitNum": 2,
+            "imageUrl": "/media/4.jpeg"
+        },
+        {
+            "id": 11,
+            "name": "f",
+            "country": "f",
+            "founded": "2021-05-04",
+            "artistNum": 2,
+            "exhibitNum": 2,
+            "imageUrl": "/media/m5.jpeg"
+        },
+        {
+            "id": 12,
+            "name": "f",
+            "country": "f",
+            "founded": "2021-05-04",
+            "artistNum": 2,
+            "exhibitNum": 2,
+            "imageUrl": "/media/m6.jpeg"
+        },
+        {
+            "id": 13,
+            "name": "g",
+            "country": "g",
+            "founded": "2021-05-04",
+            "artistNum": 2,
+            "exhibitNum": 2,
+            "imageUrl": "/media/m7.jpeg"
         }
     ]
 }
