@@ -1,7 +1,6 @@
 const path = require('path');
 const MuseumRepository = require('../repositories/museumRepository');
 const museumRepository = new MuseumRepository(path.resolve(__dirname, '../data/museums.json'));
-const museumProperty = Symbol('museum');
 const MediaRepository = require('./../repositories/mediaRepository');
 const mediaRepository = new MediaRepository(path.resolve(__dirname, '../data/media'));
 const Museum = require('../models/museum');
@@ -11,7 +10,7 @@ module.exports = {
         try {
             let page = req.query.page;
             let name = req.query.name;
-            const page_size = 3;
+            const page_size = 5;
 
             if (!page) page = 1;
             else page = Number(page);

@@ -39,7 +39,7 @@ class ArtMuseumRepository {
         else {
              museums_res = museums;
         }
-        // let's do a pagging
+        
         let paging = this.paginate(museums_res.length, page, per_page);
         museums_res = museums_res.slice(paging.startIndex, paging.endIndex+1);
 

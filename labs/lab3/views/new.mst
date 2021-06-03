@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-    {{> header}}
-    <div>
+  {{> partials/header}}
+    <div class="newMuseumForm">
         <form method="POST" action="/museums" enctype="multipart/form-data">
-            <p>New museum</p>
-            <div>
-                <div><p>Museum name:</p><input type="text" name="Mname" required></div><br>
-                <div><p>Country:</p><input type="text" name="country" required></div><br>
-                <div><p>Founded:</p><input type="date" name="founded" required></div><br>
-                <div><p>ArtistNum:</p><input type="number" name="artistNum" required></div><br>
-                <div><p>ExhibitNum:</p><input type="number" name="exhibitNum" required></div><br>
-                <div><p>Museum photo(file):</p><input type="file" name="imageUrl" required></div><br>
-                <input type="submit" value="Submit">
-            </div>
+            <p><h1>New museum</h1></p>
+            
+            <div><p>Name:</p><input class="newMuseumInput" type="text" name="Mname" required></div><br>
+            <div><p>Country:</p><input class="newMuseumInput" type="text" name="country" required></div><br>
+            <div><p>Artist number:</p><input class="newMuseumInput" type="number" name="artistNum" required></div><br>
+            <div><p>Exhibit number:</p><input class="newMuseumInput" type="number" name="exhibitNum" required></div><br>
+            <div><p>Founded:</p><input class="newMuseumInput"  type="date" name="founded" required></div><br>
+            <div><p>Museum photo(file):</p><input class="newMuseumFile" type="file" name="imageUrl" accept=".png, .jpg, .jpeg" required></div><br>
+            <input class="newMuseumButton" type="submit" value="Submit">
         </form>
     </div>
 
-    {{> footer}}
+    {{> partials/footer}}
 
 </body>
 

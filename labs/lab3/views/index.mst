@@ -2,15 +2,20 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
-  <img src="/images/first.jpg" />
+  <img class="museumsMainImage" src="/images/IndexPhoto.jpg"/>
+  <div>
+    <p>There are a lot art museums worth visiting. </p>
+    <p>On this website you will find a list of different interesting art museums.</p>
+    <p>Hope you can find one to your liking!</p>
+  </div>
+    {{> partials/footer}}
 
-  {{> footer}}
 </body>
 
 </html>

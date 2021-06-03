@@ -2,11 +2,11 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
   {{#user}}
   <img src="/images/user.jpg" class="usr_ava" />
@@ -21,7 +21,7 @@
   </div>
 
   {{/user}}
-  {{> footer}}
+    {{> partials/footer}}
 </body>
 
 </html>

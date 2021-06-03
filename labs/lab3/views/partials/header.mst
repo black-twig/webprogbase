@@ -1,5 +1,5 @@
-<header id="header">
-    <div class="name">Art Museum Association</div>
+<header>
+    <div class="name">Art Museums List</div>
 
     <img src="/images/logo.png" class="logo" />
 

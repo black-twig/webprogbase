@@ -5,14 +5,11 @@ const Media = require('../models/media');
 module.exports = {
     getMediaById(req, res) {
 
-        console.log("0");
         const media = mediaRepository.getMediaById(req.params.id);
-        console.log(media.path);
-        if (media)
-        
+        if (media!==null)
             res.sendFile(media.path);
         else
-            res.sendStatus(404);
+            res.status(404).send({message: "Media id is incorrect." });
     },
     addMedia(req, res)
     {
@@ -20,7 +17,7 @@ module.exports = {
             const id = mediaRepository.addMedia(new Media(req.file.path));
             res.status(201).json(id).end();
         } catch (error) {
-            res.sendStatus(400);
+            res.status(404).send({message: "Problems adding media." });
         }
     }
 };

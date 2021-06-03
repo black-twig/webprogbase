@@ -2,13 +2,13 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
-  <h1>Users:</h1>
+  <h1 class="usersN">Users:</h1>
   <table class="users">
     <tr>
       <th>Login</th>
@@ -25,7 +25,9 @@
     {{/users}}
     </tr>
   </table>
-  {{> footer}}
+
+    {{> partials/footer}}
+    
 </body>
 
 </html>

@@ -35,14 +35,12 @@ class MediaRepository {
 
 
         const dir = `${this.storage}/`;
-        console.log(dir);
         const searchCrit = 'm' + String(mediaId) + '.';
         let media_dir = null;
 
         fs.readdirSync(dir).forEach(file => {
 
             if (fs.lstatSync(path.resolve(dir, file)).isFile()) {
-                console.log(file);
                 if (String(file).startsWith(searchCrit)) {
                     console.log(dir + file);
                     media_dir = dir + file;

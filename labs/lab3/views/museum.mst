@@ -2,11 +2,11 @@
 
 <html lang="en">
 
-{{> head}}
+{{> partials/head}}
 
 <body>
 
-  {{> header}}
+  {{> partials/header}}
 
   {{#museum}}
   <div>
@@ -22,11 +22,12 @@
   </div>
 
   <form method="POST" action="/museums/{{id}}">
-    <input type="submit" value="Delete museum">
+    <input  class="museumDeleteButton" type="submit" value="Delete museum">
   </form>
   {{/museum}}
 
-  {{> footer}}
+    {{> partials/footer}}
+    
 </body>
 
 </html>
