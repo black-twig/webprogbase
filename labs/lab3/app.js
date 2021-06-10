@@ -75,21 +75,6 @@ app.get('/users/:id', function (req, res) {
     res.render('user', { user });
 });
 
-//app.get('/museums', function (req, res) {
-//   const museums = museumRepository.getArtMuseums();
-//    res.render('museums', { museums });
-//});
-
-//app.get('/museums/:id', function (req, res) {
-//    const museum = museumRepository.getArtMuseumById(parseInt(req.params.id));
-//    res.render('museum', { museum });
-//});
-
-// app.use('', mstRouter);
-// app.use((req, res) => {
-//     res.status(400).send({ message: "Error in route."});
-// });
-
 expressSwagger(options);
 
 app.listen(3000, function() {
