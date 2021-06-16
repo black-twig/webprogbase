@@ -13,6 +13,7 @@ const UserRepository = require('./repositories/userRepository');
 const userRepository = new UserRepository('data/users.json');
 const MuseumRepository = require('./repositories/museumRepository');
 const museumRepository = new MuseumRepository('data/museums.json');
+const config = require('./config');
 
 //
 
@@ -28,19 +29,6 @@ app.use(busboyBodyParser());
 app.use(morgan('dev'));
 
 const expressSwagger = require('express-swagger-generator')(app);
-const options = {
-    swaggerDefinition: {
-        info: {
-            description: "Third lab",
-            title: "Lab3",
-            version: "1.0.0"
-        },
-        host: "localhost:3000",
-        produces: ["application/json"]
-    },
-    basedir: __dirname,
-    files: ["./routes/**/*.js", "./models/**/*.js"]
-};
 
 
 app.use(express.static('./public'));
@@ -72,8 +60,7 @@ app.get('/users/:id', function (req, res) {
     res.render('user', { user });
 });
 
-expressSwagger(options);
 
-app.listen(3000, function() {
+app.listen(config.app.port, function() {
     console.log('Server is ready');
 });
