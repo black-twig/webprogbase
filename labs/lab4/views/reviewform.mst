@@ -17,8 +17,8 @@
                 <option value="{{_id}}" {{selected}}>{{login}}</option>
                 {{/users}} 
             </select></div><br>
-            <div><p>Rating:</p><input class="newMuseumInput" type="number" min="1" max="5" name="rating" value="{{rating}}" required></div><br>
-            <div><p>Comment:</p><input class="newMuseumInput" type="text" placeholder="Enter your comments here." 
+            <div><p>Rating:</p><input class="newMuseumInput" type="number" placeholder="Enter number 1 to 5" min="1" max="5" name="rating" value="{{rating}}" required></div><br>
+            <div><p>Comment:</p><input class="newMuseumInput" type="text" placeholder="Enter your comment here" 
                                     rows="50" cols="5" name="comment" value="{{comment}}"></div><br>
             <input class="newMuseumButton" type="submit" value="Submit">
         </form>

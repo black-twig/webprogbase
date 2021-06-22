@@ -27,7 +27,7 @@
   </form>
   
   <div>
-        <a href="/museums/newrw/{{_id}}">Add new review</a>
+        <a class="addReviewRef" href="/museums/newrw/{{_id}}">Add new review</a>
     </div>
 
   {{/museum}}
@@ -42,8 +42,8 @@
                 <td>{{user_name}}</td>
                 <td>{{rating}}</td>
                 <td>{{comment}}</td>
-                <td><a href="/museums/editrw/{{_id}}">Edit</a></td>
-                <td><a href="/museums/deleterw/{{_id}}">Delete</a></td>
+                <td class="reviewChangeRef"><a href="/museums/editrw/{{_id}}">Edit</a></td>
+                <td class="reviewChangeRef"><a href="/museums/deleterw/{{_id}}">Delete</a></td>
             </tr>
             {{/reviews}}
             </tr>
